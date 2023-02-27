@@ -1,8 +1,14 @@
-* Deploy in k8s
-  * docker build . -t ekyidag/primes:v3 -f Dockerfile
-  * docker push ekyidag/primes:v3
-  * kubectl apply -f ./deploy/primes-app.yaml
-
+* Building images
+  * node version
+    * COMMIT_TAG=$(git rev-parse --short HEAD); 
+    * docker build . -t ekyidag/primes-app:$COMMIT_TAG -f deploy/images/node/Dockerfile
+    * docker push ekyidag/primes-app:$COMMIT_TAG
+      * deploy in k8s: kubectl apply -f deploy/primes-app-node.yaml
+  * php version
+    * COMMIT_TAG=$(git rev-parse --short HEAD); 
+    * docker build . -t ekyidag/primes-app-php:$COMMIT_TAG -f deploy/images/php/Dockerfile
+    * docker push ekyidag/primes-app-php:$COMMIT_TAG
+      * deploy in k8s: kubectl apply -f deploy/primes-app-php.yaml
 * Comandos uteis
   * (restart a deployment) kubectl rollout restart deployments/{name}
   * (get all logs from deployment) kubectl logs -f deployment/{name}

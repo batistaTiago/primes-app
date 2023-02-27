@@ -6,7 +6,7 @@ metadata:
     app: primes
     lang: node
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: primes
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: primes-service
+  name: primes-service-node
   labels:
     app: primes
     component: api-node
