@@ -10,6 +10,6 @@ class AuthenticatedUser(HttpUser):
     def sample_task(self):
         BASE_LINE = 2500
         number = random.randint(0, 1000) + BASE_LINE
-        response = self.client.get('/' + str(number))
+        response = self.client.get('/' + str(number), catch_response=True)
         if (response.status_code != 200):
-            print response.text
+            print(response.text)
