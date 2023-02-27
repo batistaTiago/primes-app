@@ -8,8 +8,12 @@ class AuthenticatedUser(HttpUser):
 
     @task
     def sample_task(self):
-        BASE_LINE = 2500
+        BASE_LINE = 500
         number = random.randint(0, 1000) + BASE_LINE
-        response = self.client.get('/' + str(number), catch_response=True)
-        if (response.status_code != 200):
-            print(response.text)
+        print('sending request...')
+        response = self.client.get('/' + str(number))
+        if (response.status_code == 200):
+            print('ok...')
+        else:
+            print('error...')
+
