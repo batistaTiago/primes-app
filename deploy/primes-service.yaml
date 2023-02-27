@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: primes-service
+  labels:
+    app: primes
+    component: api
+spec:
+  type: NodePort
+  selector:
+      app: primes
+      component: api
+  ports:
+      - port: 3000
+        nodePort: 30101

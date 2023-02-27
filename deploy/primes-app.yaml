@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: primes-app
+  labels:
+    app: primes
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: primes
+      component: api
+  template:
+    metadata:
+      labels:
+        app: primes
+        component: api
+    spec:
+      containers:
+      - name: web-server
+        image: ekyidag/primes:v3
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "125m"
+          limits:
+            memory: "512Mi"
+            cpu: "375m"
+        ports:
+        - containerPort: 3000
+        command:
+          - "node"
+          - "index.js"
