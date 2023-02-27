@@ -8,4 +8,4 @@
   * (get all logs from deployment) kubectl logs -f deployment/{name}
 
 
-`COMMIT_TAG=$(git rev-parse --short HEAD); docker build . -t ekyidag/primes:$COMMIT_TAG -f Dockerfile; docker push ekyidag/primes:$COMMIT_TAG; kubectl apply -f .\deploy\primes-app.yaml`
+`COMMIT_TAG=$(git rev-parse --short HEAD); docker build . -t ekyidag/primes:$COMMIT_TAG -f Dockerfile; docker push ekyidag/primes:$COMMIT_TAG; kubectl apply -f ./deploy/primes-app.yaml`
