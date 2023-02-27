@@ -1,5 +1,4 @@
 const express = require('express');
-
 const app = express();
 
 const isPrime = (num) => {
@@ -27,7 +26,7 @@ app.get('/:count', async (req, res) => {
     
     let elapsedTime = null;
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         let primes = [];
         let n = 0;
     
