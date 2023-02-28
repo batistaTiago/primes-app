@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 function isPrime(int $num): bool
 {
-    if ($num < 1) return false;
+    if ($num <= 1) return false;
 
     for ($i = 2; $i < $num - 1; $i++) {
         if ($num % $i === 0) {
@@ -28,7 +28,7 @@ function isPrime(int $num): bool
 
 Route::get('/', function () {
 
-    $input = request()->count;
+    $input = (int) request()->count;
 
     $requestDateTime = \Carbon\Carbon::now();
     $startTimestamp = $requestDateTime->timestamp;
@@ -46,11 +46,10 @@ Route::get('/', function () {
         $n++;
     }
 
-    $elapsedTime = \Carbon\Carbon::now()->diffInMilliseconds();
+    $elapsedTime = $requestDateTime->diffInMilliseconds();
 
     return response()->json([
         'input' => $input,
-        'elapsedTime' => $elapsedTime,
-        'primes' => $primes
+        'elapsedTime' => $elapsedTime
     ]);
 });

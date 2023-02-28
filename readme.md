@@ -17,5 +17,12 @@
 * Comandos uteis
   * (restart a deployment) kubectl rollout restart deployments/{name}
   * (get all logs from deployment) kubectl logs -f deployment/{name}
-* Exemplo de como subir app (k8s: versao laravel) no deploy local
-  * `COMMIT_TAG=dev; docker build . -t ekyidag/primes-app-laravel:$COMMIT_TAG -f ./laravel-version/Dockerfile; docker push ekyidag/primes-app-laravel:$COMMIT_TAG; kubectl delete deployments --all; kubectl apply -f deploy/primes-app-laravel.yaml`
+  * Exemplo de como subir app no k8s:
+```
+  VERSION=node && \
+  COMMIT_TAG=$(git rev-parse --short HEAD) && \
+  docker build . -t ekyidag/primes-app-$VERSION:$COMMIT_TAG -f ./$VERSION-version/Dockerfile && \
+  docker push ekyidag/primes-app-$VERSION:$COMMIT_TAG && \
+  kubectl delete deployment primes-app-$VERSION; \
+  kubectl apply -f deploy/primes-app-$VERSION.yaml
+```

@@ -6,7 +6,7 @@ use \Carbon\Carbon;
 
 function isPrime(int $num): bool
 {
-    if ($num < 1) return false;
+    if ($num <= 1) return false;
 
     for ($i = 2; $i < $num - 1; $i++) {
         if ($num % $i === 0) {
@@ -17,7 +17,7 @@ function isPrime(int $num): bool
     return true;
 }
 
-$input = $_GET['count'];
+$input = (int) $_GET['count'];
 
 $requestDateTime = Carbon::now();
 $startTimestamp = $requestDateTime->timestamp;
@@ -35,12 +35,11 @@ while (count($primes) < $input) {
     $n++;
 }
 
-$elapsedTime = Carbon::now()->diffInMilliseconds();
+$elapsedTime = $requestDateTime->diffInMilliseconds();
 
 $responseBody = [
     'input' => $input,
-    'elapsedTime' => $elapsedTime,
-    'primes' => $primes
+    'elapsedTime' => $elapsedTime
 ];
 
 header('Content-Type: application/json');

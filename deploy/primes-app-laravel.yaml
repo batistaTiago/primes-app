@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
       - name: web-server-laravel
-        image: ekyidag/primes-app-laravel:dev
-        imagePullPolicy: Always
+        image: ekyidag/primes-app-laravel:81e1917
         resources:
           requests:
             memory: "256Mi"

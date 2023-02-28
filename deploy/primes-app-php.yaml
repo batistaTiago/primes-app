@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: web-server-php
-        image: ekyidag/primes-app-php:d12adac
+        image: ekyidag/primes-app-php:81e1917
         resources:
           requests:
             memory: "256Mi"

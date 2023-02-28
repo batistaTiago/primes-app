@@ -26,26 +26,22 @@ app.get('/:count', async (req, res) => {
     
     let elapsedTime = null;
 
-    return new Promise((resolve) => {
-        let primes = [];
-        let n = 0;
-    
-        while (primes.length < input) {
-            if (isPrime(n)) {
-                primes.push(n);
-            }
-    
-            n++;
+    let primes = [];
+    let n = 0;
+
+    while (primes.length < input) {
+        if (isPrime(n)) {
+            primes.push(n);
         }
+
+        n++;
+    }
+
+    elapsedTime = new Date().getTime() - startTimestamp;
+
+    log(`${input} prime calculated in ${elapsedTime} ms.`);
     
-        elapsedTime = new Date().getTime() - startTimestamp;
-    
-        log(`${input} prime calculated in ${elapsedTime} ms.`);
-        
-        resolve(primes);
-    }).then((primes) => {
-        res.json({ input, elapsedTime, primes });
-    });
+    res.json({ input, elapsedTime });
 });
 
 app.listen(3000, () => {

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: web-server-node
-        image: ekyidag/primes:c684c62
+        image: ekyidag/primes-app-node:81e1917
         resources:
           requests:
             memory: "256Mi"
