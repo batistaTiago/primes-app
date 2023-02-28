@@ -27,3 +27,14 @@ class AuthenticatedUser(HttpUser):
         else:
             print('error...')
 
+    @task
+    def sample_task_laravel(self):
+        BASE_LINE = 500
+        number = random.randint(0, 1000) + BASE_LINE
+        print('sending request to laravel server...')
+        response = self.client.get('http://192.168.59.100:30103/?count=' + str(number), name='Laravel')
+        if (response.status_code == 200):
+            print('ok...')
+        else:
+            print('error...')
+
