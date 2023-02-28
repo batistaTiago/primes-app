@@ -1,12 +1,12 @@
 * Building images
   * node version
     * COMMIT_TAG=$(git rev-parse --short HEAD); 
-    * docker build . -t ekyidag/primes-app:$COMMIT_TAG -f deploy/images/node/Dockerfile
-    * docker push ekyidag/primes-app:$COMMIT_TAG
+    * docker build . -t ekyidag/primes-app-node:$COMMIT_TAG -f ./node-version/Dockerfile
+    * docker push ekyidag/primes-app-node:$COMMIT_TAG
       * deploy in k8s: kubectl apply -f deploy/primes-app-node.yaml
   * php version
     * COMMIT_TAG=$(git rev-parse --short HEAD); 
-    * docker build . -t ekyidag/primes-app-php:$COMMIT_TAG -f deploy/images/php/Dockerfile
+    * docker build . -t ekyidag/primes-app-php:$COMMIT_TAG -f ./php-version/Dockerfile
     * docker push ekyidag/primes-app-php:$COMMIT_TAG
       * deploy in k8s: kubectl apply -f deploy/primes-app-php.yaml
 * Comandos uteis

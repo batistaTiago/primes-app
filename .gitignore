@@ -1,3 +1,3 @@
-node_modules
-vendor
+node-version/node_modules
+php-version/vendor
 locust/__pycache__
