@@ -21,7 +21,7 @@ class AuthenticatedUser(HttpUser):
         BASE_LINE = 500
         number = random.randint(0, 1000) + BASE_LINE
         print('sending request to php server...')
-        response = self.client.get('http://192.168.59.100:30102/' + str(number), name='Php')
+        response = self.client.get('http://192.168.59.100:30102/?count=' + str(number), name='Php')
         if (response.status_code == 200):
             print('ok...')
         else:
