@@ -26,9 +26,9 @@ function isPrime(int $num): bool
     return true;
 }
 
-Route::get('/', function ($request) {
+Route::get('/', function () {
 
-    $input = $request->count;
+    $input = request()->count;
 
     $requestDateTime = \Carbon\Carbon::now();
     $startTimestamp = $requestDateTime->timestamp;
@@ -46,7 +46,7 @@ Route::get('/', function ($request) {
         $n++;
     }
 
-    $elapsedTime = Carbon::now()->diffInMilliseconds();
+    $elapsedTime = \Carbon\Carbon::now()->diffInMilliseconds();
 
     return response()->json([
         'input' => $input,
